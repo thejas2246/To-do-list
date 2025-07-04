@@ -3,7 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>To DO List</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <p>TO DO List</p>
+      <nav><button>+Add To Do</button></nav>
+    </header>
+    <div class="middle-content">
+      <dialog class="project-dialog">
+        <form class="project-form">
+          <label for="project-name">Project Name</label>
+          <input type="text" name="project-name" id="project-name" />
+          <label for="project-description">Project Name</label>
+          <input
+            type="text"
+            name="project-description"
+            id="project-description"
+          />
+          <button
+            type="submit"
+            formmethod="dialog"
+            class="project-submit-button"
+          >
+            Submit
+          </button>
+        </form>
+      </dialog>
+      <div class="side-content">
+        <div class="project-buttons"></div>
+        <button class="add-project-button">+ Add project</button>
+      </div>
+      <div class="main-content"></div>
+    </div>
+  </body>
 </html>
