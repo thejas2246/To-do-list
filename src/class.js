@@ -20,3 +20,11 @@ export class CreateList {
     this.checkList = checkList;
   }
 }
+
+export class StoreObjects {
+  static projectArray = [];
+
+  static addProjectToArray(project) {
+    this.projectArray.push(project);
+  }
+}

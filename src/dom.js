@@ -1,7 +1,5 @@
-import { CreateProject } from "./class";
-import { showProjectForm } from "./form";
+import { StoreObjects } from "./class";
 
-function createProjectButton() {}
-
-const addProjectButton = document.querySelector(".add-project-button");
-addProjectButton.addEventListener("click", () => console.log("hi"));
+export function updateSideDisplay() {
+  console.log(StoreObjects.projectArray);
+}
