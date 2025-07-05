@@ -4,6 +4,7 @@ export class CreateProject {
   constructor(name, description) {
     this.name = name;
     this.description = description;
+    this.uid = crypto.randomUUID();
   }
 
   addListToProject(list) {
@@ -12,18 +13,17 @@ export class CreateProject {
 }
 
 export class CreateList {
-  constructor(ListName, ListDescription, dueDate, priority, checkList) {
+  constructor(ListName, dueDate, priority) {
     this.ListName = ListName;
-    this.ListDescription = ListDescription;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.checkList = checkList;
+    this.checkList = false;
   }
 }
 
 export class StoreObjects {
   static projectArray = [];
-
+  static currentProject = "";
   static addProjectToArray(project) {
     this.projectArray.push(project);
   }

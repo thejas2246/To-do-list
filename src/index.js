@@ -1,6 +1,10 @@
 import "./styles.css";
-import { CreateList, CreateProject } from "./class";
-import { showProjectForm, onSubmitProjectForm } from "./form";
+import {
+  showProjectForm,
+  onSubmitProjectForm,
+  showListForm,
+  onSubmitListForm,
+} from "./form";
 
 const addProjectButton = document.querySelector(".add-project-button");
 addProjectButton.addEventListener("click", showProjectForm);
@@ -8,4 +12,11 @@ addProjectButton.addEventListener("click", showProjectForm);
 const projectFormSubmitButton = document.querySelector(
   ".project-submit-button"
 );
+
 projectFormSubmitButton.addEventListener("click", onSubmitProjectForm);
+
+const addListButton = document.querySelector(".add-todo-button");
+addListButton.addEventListener("click", showListForm);
+
+const listFormSubmitButton = document.querySelector(".list-submit-button");
+listFormSubmitButton.addEventListener("click", onSubmitListForm);

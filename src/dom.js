@@ -6,15 +6,20 @@ export function updateSideDisplay() {
   let count = 1;
   for (let project of StoreObjects.projectArray) {
     const projectButton = document.createElement("button");
+    projectButton.setAttribute("data-id", project.uid);
     projectButton.textContent = `Project ${count}`;
     projectButton.addEventListener("click", () => {
       updateProjectDetailsOnScreen(project);
+      setCurrentProject(project);
     });
     projectButtons.appendChild(projectButton);
     count++;
   }
 }
 
+function setCurrentProject(project) {
+  StoreObjects.currentProject = project.uid;
+}
 function updateProjectDetailsOnScreen(project) {
   console.log(project);
   const mainContent = document.querySelector(".main-content");
