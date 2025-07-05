@@ -14,6 +14,8 @@ export function updateSideDisplay() {
     projectButton.addEventListener("click", () => {
       updateProjectDetailsOnScreen(project);
       setCurrentProject(project);
+      updateListOnScreen(project);
+      updateButtonColor(project);
     });
     projectButtons.appendChild(projectButton);
     count++;
@@ -57,6 +59,43 @@ export function updateDisplayOnListSubmission() {
   for (let project of StoreObjects.projectArray) {
     if (project.uid == StoreObjects.currentProject) {
       updateProjectDetailsOnScreen(project);
+      updateListOnScreen(project);
+    }
+  }
+}
+
+export function updateListOnScreen(project) {
+  const listContainer = document.querySelector(".bottom");
+  listContainer.textContent = "";
+  for (let list of project.toDoList) {
+    const itemContainer = document.createElement("div");
+    const checkedList = document.createElement("input");
+    checkedList.setAttribute("type", "checkbox");
+    const listName = document.createElement("h3");
+    listName.textContent = list.listName;
+    const dueDate = document.createElement("p");
+    dueDate.textContent = list.dueDate;
+    const priority = document.createElement("p");
+    priority.textContent = list.priority;
+
+    itemContainer.appendChild(checkedList);
+    itemContainer.appendChild(listName);
+    itemContainer.appendChild(dueDate);
+    itemContainer.appendChild(priority);
+
+    listContainer.appendChild(itemContainer);
+  }
+}
+
+export function updateButtonColor() {
+  for (let project of StoreObjects.projectArray) {
+    let colorButton = document.querySelector(`[data-id="${project.uid}"]`);
+    if (project.uid == StoreObjects.currentProject) {
+      colorButton.classList.add("button-active");
+      colorButton.classList.remove("button-default");
+    } else {
+      colorButton.classList.add("button-default");
+      colorButton.classList.remove("button-active");
     }
   }
 }

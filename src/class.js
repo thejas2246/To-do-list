@@ -16,8 +16,8 @@ export class CreateProject {
 }
 
 export class CreateList {
-  constructor(ListName, dueDate, priority) {
-    this.ListName = ListName;
+  constructor(listName, dueDate, priority) {
+    this.listName = listName;
     this.dueDate = dueDate;
     this.priority = priority;
     this.checkList = false;

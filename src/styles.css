@@ -1,24 +1,82 @@
+:root{
+    --bg-black:#000000FF;
+    --bg-orange: #FF5833FF;
+    --f-red:#DC2626FF;
+    --f-orange:#CA8A04FF;
+    --f-green:#16A34AFF;
+    --f-white:#FFFFFFFF;
+    --f-grey: #8C8D8BFF;
+    --b-color: #393D47FF;
+    
+}
+
 body{
     margin: 0;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--bg-black);
+    font-family: Archivo;
 }
 
 header{
-    background-color: aqua;
+    padding:10px 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
-
+header>p{
+    color: var(--f-white);
+    font-size: 18px;
+    font-weight: 600;
+}
+header button{
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    font: inherit;
+    font-size: 12px;
+     background-color: var(--bg-orange);
+    color: var(--f-white);
+}
 .middle-content{
     flex: 1;
-    background-color: green;
     display: flex;
 }
 
 .side-content{
-    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
+.side-content button{
+    padding: 6px 60px 6px 5px;
+    border: none;
+    border-radius: 5px;
+    font-family: Inter;
+    font-size: 12px;
+}
+.button-default,.add-project-button{
+    background-color: var(--bg-black);
+    color: var(--f-grey);
+}
+
+.button-active{
+    background-color: var(--bg-orange);
+    color: var(--f-white);
+}
+
+.project-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.side-content button:hover{
+    background-color: var(--bg-orange);
+    color: var(--f-white);
+}
+
 .main-content{
-    background-color: brown;
+   
     flex: 1;
 }
