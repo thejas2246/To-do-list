@@ -5,6 +5,7 @@ export class CreateProject {
     this.name = name;
     this.description = description;
     this.uid = crypto.randomUUID();
+    this.totalTask = 0;
   }
 
   addListToProject(list) {

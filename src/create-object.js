@@ -17,3 +17,11 @@ export function addListToCurrentProject(list) {
     }
   }
 }
+
+export function updateTotalTask() {
+  for (let project of StoreObjects.projectArray) {
+    if (project.uid == StoreObjects.currentProject) {
+      project.totalTask = project.toDoList.length;
+    }
+  }
+}

@@ -1,5 +1,9 @@
 import { addListToCurrentProject } from "./create-object";
-import { createProjectObject, createListObject } from "./create-object";
+import {
+  createProjectObject,
+  createListObject,
+  updateTotalTask,
+} from "./create-object";
 import { updateSideDisplay } from "./dom";
 
 export function showProjectForm() {
@@ -16,6 +20,7 @@ export function onSubmitListForm() {
   let [listName, listDate, priority] = getListFormValues();
   let newList = createListObject(listName, listDate, priority);
   addListToCurrentProject(newList);
+  updateTotalTask();
   ListForm.reset();
 }
 
