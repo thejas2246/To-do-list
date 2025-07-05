@@ -4,7 +4,7 @@ import {
   createListObject,
   updateTotalTask,
 } from "./create-object";
-import { updateSideDisplay } from "./dom";
+import { updateSideDisplay, updateDisplayOnListSubmission } from "./dom";
 
 export function showProjectForm() {
   const projectDialog = document.querySelector(".project-dialog");
@@ -21,6 +21,7 @@ export function onSubmitListForm() {
   let newList = createListObject(listName, listDate, priority);
   addListToCurrentProject(newList);
   updateTotalTask();
+  updateDisplayOnListSubmission();
   ListForm.reset();
 }
 

@@ -7,7 +7,7 @@ export class CreateProject {
     this.uid = crypto.randomUUID();
     this.totalTask = 0;
     this.completedTask = 0;
-    this.dueTask = this.totalTask - this.completedTask;
+    this.dueTask = 0;
   }
 
   addListToProject(list) {
