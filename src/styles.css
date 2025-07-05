@@ -1,5 +1,5 @@
 :root{
-    --bg-black:#000000FF;
+    --bg-black:#000000;
     --bg-orange: #FF5833FF;
     --f-red:#DC2626FF;
     --f-orange:#CA8A04FF;
@@ -17,6 +17,7 @@ body{
     flex-direction: column;
     background-color: var(--bg-black);
     font-family: Archivo;
+    line-height: 1.5;
 }
 
 header{
@@ -75,8 +76,45 @@ header button{
     background-color: var(--bg-orange);
     color: var(--f-white);
 }
-
+dialog{
+    top: 10px
+}
+.top{
+    border: 1px solid var(--b-color);
+    padding: 0px 20px 20px 20px;
+    box-shadow: 0px 0px 1px;
+    border-radius: 10px;
+}
+.top h1{
+    color: var(--f-white);
+    font-size: 36px;
+}
+.top p{
+    color: var(--f-grey);
+    font-size: 18px;
+    width: 60ch;
+}
 .main-content{
-   
+   padding: 20px 20px;
     flex: 1;
+}
+
+.edit-container{
+    display: flex;
+    gap: 10px;
+}
+.edit-container>button{
+    font-size: 12px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+}
+.edit-container>*:nth-child(1){
+    background-color: var(--bg-orange);
+    color: var(--f-white);
+}
+
+.edit-container>*:nth-child(2){
+    background-color: #282C34FF;
+    color: var(--f-white);
 }

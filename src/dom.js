@@ -33,14 +33,24 @@ export function updateProjectDetailsOnScreen(project) {
 
   const projectHeading = document.createElement("h1");
   const projectDescription = document.createElement("p");
-
+  const editButton = document.createElement("button");
+  const deleteButton = document.createElement("button");
+  const editButtonContainer = document.createElement("div");
+  editButtonContainer.setAttribute("class", "edit-container");
   projectHeadingSection.appendChild(projectHeading);
   projectHeadingSection.appendChild(projectDescription);
+
+  editButtonContainer.appendChild(editButton);
+  editButtonContainer.appendChild(deleteButton);
+  projectHeadingSection.appendChild(editButtonContainer);
+
+  editButton.textContent = "Edit Project";
+  deleteButton.textContent = "Delete Project";
 
   projectHeading.textContent = project.name;
   projectDescription.textContent = project.description;
 
-  const projectStatistic = document.querySelector(".middle");
+  const projectStatistic = document.querySelector(".middle-container");
   projectStatistic.textContent = " ";
   const totalTask = document.createElement("p");
   const completedTask = document.createElement("p");
