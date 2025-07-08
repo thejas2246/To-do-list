@@ -22,6 +22,18 @@ export function updateTotalTask() {
   for (let project of StoreObjects.projectArray) {
     if (project.uid == StoreObjects.currentProject) {
       project.totalTask = project.toDoList.length;
+      project.completedTask = countCompletedTask(project);
+      project.dueTask = project.totalTask - project.completedTask;
     }
   }
+}
+
+function countCompletedTask(project) {
+  let count = 0;
+  for (let list of project.toDoList) {
+    if (list.checkList == "true") {
+      count++;
+    }
+  }
+  return count;
 }

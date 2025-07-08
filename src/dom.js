@@ -106,7 +106,19 @@ export function updateListOnScreen(project) {
     dueDate.textContent = list.dueDate;
     const priority = document.createElement("p");
     priority.textContent = list.priority;
-
+    if (list.priority == "low") {
+      priority.classList.add("low");
+      priority.classList.remove("medium");
+      priority.classList.remove("high");
+    } else if (list.priority == "medium") {
+      priority.classList.add("medium");
+      priority.classList.remove("low");
+      priority.classList.remove("high");
+    } else {
+      priority.classList.add("high");
+      priority.classList.remove("low");
+      priority.classList.remove("medium");
+    }
     itemContainer.appendChild(checkedList);
     itemContainer.appendChild(listName);
     itemContainer.appendChild(dueDate);
