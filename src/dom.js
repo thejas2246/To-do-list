@@ -52,17 +52,35 @@ export function updateProjectDetailsOnScreen(project) {
 
   const projectStatistic = document.querySelector(".middle-container");
   projectStatistic.textContent = " ";
+  const totalTaskContainer = document.createElement("div");
+  const completedTaskContainer = document.createElement("div");
+  const dueTaskContainer = document.createElement("div");
+
   const totalTask = document.createElement("p");
+  const totalTaskText = document.createElement("p");
+  totalTaskText.textContent = "total task";
   const completedTask = document.createElement("p");
+  const completedTaskText = document.createElement("p");
+  completedTaskText.textContent = "completed task";
+
   const dueTask = document.createElement("p");
+  const dueTaskText = document.createElement("p");
+  dueTaskText.textContent = "due task";
 
   totalTask.textContent = project.totalTask;
   completedTask.textContent = project.completedTask;
   dueTask.textContent = project.dueTask;
 
-  projectStatistic.appendChild(totalTask);
-  projectStatistic.appendChild(completedTask);
-  projectStatistic.appendChild(dueTask);
+  totalTaskContainer.appendChild(totalTask);
+  totalTaskContainer.appendChild(totalTaskText);
+  completedTaskContainer.appendChild(completedTask);
+  completedTaskContainer.appendChild(completedTaskText);
+  dueTaskContainer.appendChild(dueTask);
+  dueTaskContainer.appendChild(dueTaskText);
+
+  projectStatistic.appendChild(totalTaskContainer);
+  projectStatistic.appendChild(completedTaskContainer);
+  projectStatistic.appendChild(dueTaskContainer);
 }
 
 export function updateDisplayOnListSubmission() {
@@ -76,7 +94,8 @@ export function updateDisplayOnListSubmission() {
 
 export function updateListOnScreen(project) {
   const listContainer = document.querySelector(".bottom");
-  listContainer.textContent = "";
+  const listGrid = document.querySelector(".bottom-list-container");
+  listGrid.textContent = "";
   for (let list of project.toDoList) {
     const itemContainer = document.createElement("div");
     const checkedList = document.createElement("input");
@@ -93,8 +112,9 @@ export function updateListOnScreen(project) {
     itemContainer.appendChild(dueDate);
     itemContainer.appendChild(priority);
 
-    listContainer.appendChild(itemContainer);
+    listGrid.appendChild(itemContainer);
   }
+  listContainer.appendChild(listGrid);
 }
 
 export function updateButtonColor() {

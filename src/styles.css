@@ -47,6 +47,8 @@ button{
     font-size: 12px;
     font-weight: 400;
 }
+
+
 .middle-content{
     flex: 1;
     display: flex;
@@ -108,7 +110,7 @@ flex: 1;
 label{
     display: block;
 }
-.top{
+.top,.middle{
     border: 1px solid var(--b-color);
     padding: 0px 20px 20px 20px;
     box-shadow: 0px 0px 1px;
@@ -126,6 +128,9 @@ label{
 .main-content{
    padding: 20px 20px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .edit-container{
@@ -146,4 +151,90 @@ label{
 .edit-container>*:nth-child(2){
     background-color: #282C34FF;
     color: var(--f-white);
+}
+
+input{
+    border-radius: 3px;
+    padding: 4px;
+    border: none;
+    outline-color: var(--bg-black);
+    background-color:rgb(228, 228, 228);
+    box-sizing: border-box;
+}
+
+.project-dialog{
+    color: var(--f-white);
+    background-color: var(--bg-black);
+    border-color: var(--b-color);
+}
+
+.project-submit-button{
+    background-color: var(--bg-orange);
+    color: var(--f-white);
+}
+
+.list-dialog{
+    background-color: var(--b-color);
+    color: var(--f-white);
+    border:none;
+}
+.radio-container{
+    display: flex;
+    gap: 10px;
+}
+.list-form{
+    gap: 10px;
+}
+
+.middle{
+    color: green;
+    padding: 20px;
+    padding-bottom: 50px;
+}
+.middle>h2,.bottom>h2{
+    color: var(--f-white);
+    font-size: 20px;
+}
+.middle-container{
+    display: flex;
+    font-size: 36px;
+    justify-content: space-evenly;
+}
+.middle-container>div{
+    text-align: center;
+}
+.middle-container>div>*{
+    margin: 0;
+}
+.middle-container>div>*:nth-child(2){
+    font-size: 14px;
+    text-align: center;
+    color: var(--f-grey);
+}
+
+.middle-container>*:nth-child(1)>*:nth-child(1){
+    color: var(--bg-orange);
+}
+
+.middle-container>*:nth-child(3)>*:nth-child(1){
+    color: var(--f-red);
+}
+.bottom-list-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,270px);
+    gap: 20px;
+}
+.bottom-list-container>div{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    padding:20px
+}
+.bottom-list-container>div>*:nth-child(2){
+    flex: 1;
+  white-space: normal;          
+  word-break: break-word;              /* Prevent it from growing beyond parent */
+  margin: 0;  
 }
