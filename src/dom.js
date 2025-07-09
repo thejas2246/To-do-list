@@ -9,6 +9,7 @@ export function updateSideDisplay() {
     const projectButton = document.createElement("button");
 
     projectButton.setAttribute("data-id", project.uid);
+    projectButton.setAttribute("class", "button-default");
     projectButton.textContent = `Project ${count}`;
 
     projectButton.addEventListener("click", () => {
@@ -22,7 +23,7 @@ export function updateSideDisplay() {
   }
 }
 
-function setCurrentProject(project) {
+export function setCurrentProject(project) {
   StoreObjects.currentProject = project.uid;
 }
 
@@ -41,7 +42,9 @@ export function updateProjectDetailsOnScreen(project) {
   projectHeadingSection.appendChild(projectDescription);
 
   editButtonContainer.appendChild(editButton);
-  editButtonContainer.appendChild(deleteButton);
+  if (project.isDefault == false) {
+    editButtonContainer.appendChild(deleteButton);
+  }
   projectHeadingSection.appendChild(editButtonContainer);
 
   editButton.textContent = "Edit Project";

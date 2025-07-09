@@ -8,7 +8,7 @@ export class CreateProject {
     this.totalTask = 0;
     this.completedTask = 0;
     this.dueTask = 0;
-    this.isDefault = false;
+    this.isDefault = isDefault;
   }
 
   addListToProject(list) {
