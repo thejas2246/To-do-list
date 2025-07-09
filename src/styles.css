@@ -65,6 +65,8 @@ button{
     border-radius: 5px;
     font-family: Inter;
     font-size: 12px;
+    background-color: var(--bg-black);
+    color: var(--f-grey);
 }
 .button-default,.add-project-button{
     background-color: var(--bg-black);

@@ -5,8 +5,8 @@ import {
   showListForm,
   onSubmitListForm,
 } from "./form";
-
-import { updateButtonColor } from "./dom";
+import { getData, storeData } from "./storageHandler";
+import { updateButtonColor, updateSideDisplay } from "./dom";
 
 const addProjectButton = document.querySelector(".add-project-button");
 addProjectButton.addEventListener("click", showProjectForm);
@@ -25,3 +25,10 @@ addListButton.addEventListener("click", showListForm);
 
 const listFormSubmitButton = document.querySelector(".list-submit-button");
 listFormSubmitButton.addEventListener("click", onSubmitListForm);
+
+window.addEventListener("beforeunload", storeData);
+
+document.addEventListener("DOMContentLoaded", () => {
+  getData();
+  updateSideDisplay();
+});

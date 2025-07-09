@@ -1,13 +1,14 @@
 export class CreateProject {
   toDoList = [];
 
-  constructor(name, description) {
+  constructor(name, description, isDefault = false) {
     this.name = name;
     this.description = description;
     this.uid = crypto.randomUUID();
     this.totalTask = 0;
     this.completedTask = 0;
     this.dueTask = 0;
+    this.isDefault = false;
   }
 
   addListToProject(list) {
