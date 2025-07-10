@@ -221,23 +221,52 @@ input{
 }
 .bottom-list-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,270px);
+    grid-template-columns: repeat(auto-fit,360px);
     gap: 20px;
 }
 .bottom-list-container>div{
-    background-color: white;
+    background-color: var(--bg-black);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap:10px;
-    padding:20px
+    padding:20px;
+    border: 1px solid var(--b-color);
 }
-.bottom-list-container>div>*:nth-child(2){
+.bottom-list-container input{
+    border: 1px solid var(--bg-orange);
+    border-color: var(--bg-orange);
+    height: 20px;
+}
+.bottom-list-container>div img{
+    height: 20px;
+}
+.bottom-list-container>div button{
+    padding: 0;
+    background-color: var(--bg-black);
+}
+.bottom-list-container div{
+    color: var(--f-white);
+}
+
+.bottom-list-container>div>*:nth-child(1){
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.bottom-list-container>div>*:nth-child(1)>h3{
+    width: 10ch;    
+  white-space: normal;          
+  word-break: break-word;             
+  margin: 0; 
+}
+/* .bottom-list-container>div>*:nth-child(1){
     flex: 1;
   white-space: normal;          
   word-break: break-word;             
   margin: 0;  
-}
+} */
 .low{
     color: var(--f-green);
 }

@@ -1,5 +1,8 @@
 import { StoreObjects } from "./class";
 import { openEditForm } from "./form";
+import editIcon from "./assets/icons/edit.svg";
+import trashIcon from "./assets/icons/trash.svg";
+import { format } from "date-fns";
 
 export function updateSideDisplay() {
   const projectButtons = document.querySelector(".project-buttons");
@@ -105,13 +108,36 @@ export function updateListOnScreen(project) {
   const listGrid = document.querySelector(".bottom-list-container");
   listGrid.textContent = "";
   for (let list of project.toDoList) {
+    const projectEditIcon = document.createElement("img");
+    const projectEditButton = document.createElement("button");
+    const listTrashIcon = document.createElement("img");
+    const listTrashButton = document.createElement("button");
+    projectEditIcon.src = editIcon;
+    listTrashIcon.src = trashIcon;
+    projectEditButton.appendChild(projectEditIcon);
+    listTrashButton.appendChild(listTrashIcon);
     const itemContainer = document.createElement("div");
+
+    const listDetailContainer = document.createElement("div");
+    const listDateContainer = document.createElement("div");
+
+    itemContainer.appendChild(listDetailContainer);
+    itemContainer.appendChild(listDateContainer);
+
     const checkedList = document.createElement("input");
     checkedList.setAttribute("type", "checkbox");
     const listName = document.createElement("h3");
     listName.textContent = list.listName;
     const dueDate = document.createElement("p");
-    dueDate.textContent = list.dueDate;
+    console.log(list.dueDate);
+
+    let [year, month, day] = list.dueDate.split("-");
+    const formattedDate = format(
+      new Date(year, month - 1, day),
+      "LLLL dd,yyyy"
+    );
+
+    dueDate.textContent = formattedDate;
     const priority = document.createElement("p");
     priority.textContent = list.priority;
     if (list.priority == "low") {
@@ -127,10 +153,12 @@ export function updateListOnScreen(project) {
       priority.classList.remove("low");
       priority.classList.remove("medium");
     }
-    itemContainer.appendChild(checkedList);
-    itemContainer.appendChild(listName);
-    itemContainer.appendChild(dueDate);
-    itemContainer.appendChild(priority);
+    listDetailContainer.appendChild(checkedList);
+    listDetailContainer.appendChild(listName);
+    listDetailContainer.appendChild(priority);
+    listDetailContainer.appendChild(projectEditButton);
+    listDetailContainer.appendChild(listTrashButton);
+    listDateContainer.appendChild(dueDate);
 
     listGrid.appendChild(itemContainer);
   }
