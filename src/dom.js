@@ -1,4 +1,5 @@
 import { StoreObjects } from "./class";
+import { openEditForm } from "./form";
 
 export function updateSideDisplay() {
   const projectButtons = document.querySelector(".project-buttons");
@@ -41,15 +42,20 @@ export function updateProjectDetailsOnScreen(project) {
   projectHeadingSection.appendChild(projectHeading);
   projectHeadingSection.appendChild(projectDescription);
 
-  editButtonContainer.appendChild(editButton);
   if (project.isDefault == false) {
+    editButtonContainer.appendChild(editButton);
     editButtonContainer.appendChild(deleteButton);
   }
   projectHeadingSection.appendChild(editButtonContainer);
 
   editButton.textContent = "Edit Project";
   deleteButton.textContent = "Delete Project";
+  editButton.setAttribute("class", "project-edit-button");
 
+  editButton.addEventListener("click", openEditForm);
+
+  deleteButton.setAttribute("class", "project-delete-button");
+  console.log(project.name);
   projectHeading.textContent = project.name;
   projectDescription.textContent = project.description;
 
@@ -143,4 +149,20 @@ export function updateButtonColor() {
       colorButton.classList.remove("button-active");
     }
   }
+}
+
+export function editProject() {
+  const projectEditForm = document.querySelector(".project-edit-form");
+  const projectEditName = document.querySelector("#project-edit-name");
+  const projectEditDescription = document.querySelector(
+    "#project-edit-description"
+  );
+  for (let project of StoreObjects.projectArray) {
+    if (StoreObjects.currentProject == project.uid) {
+      project.name = projectEditName.value;
+      project.description = projectEditDescription.value;
+      updateProjectDetailsOnScreen(project);
+    }
+  }
+  projectEditForm.reset();
 }

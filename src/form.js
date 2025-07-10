@@ -1,3 +1,4 @@
+import { StoreObjects } from "./class";
 import { addListToCurrentProject } from "./create-object";
 import {
   createProjectObject,
@@ -44,4 +45,20 @@ function getProjectFormValues() {
   const projectName = document.querySelector("#project-name");
   const projectDescription = document.querySelector("#project-description");
   return [projectName.value, projectDescription.value];
+}
+
+export function openEditForm() {
+  const projectEditForm = document.querySelector(".project-edit-dialog");
+  const projectEditName = document.querySelector("#project-edit-name");
+  const projectEditDescription = document.querySelector(
+    "#project-edit-description"
+  );
+  projectEditForm.showModal();
+
+  for (let project of StoreObjects.projectArray) {
+    if (project.uid == StoreObjects.currentProject) {
+      projectEditName.value = project.name;
+      projectEditDescription.value = project.description;
+    }
+  }
 }

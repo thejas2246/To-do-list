@@ -90,6 +90,44 @@
           </div>
         </form>
       </dialog>
+      <dialog class="project-edit-dialog">
+        <h2>Project Details</h2>
+        <form class="project-edit-form">
+          <div>
+            <label for="project-name">Name</label>
+            <input
+              type="text"
+              name="project-edit-name"
+              id="project-edit-name"
+            />
+          </div>
+          <div>
+            <label for="project-description">Description</label>
+            <input
+              type="text"
+              name="project-edit-description"
+              id="project-edit-description"
+            />
+          </div>
+
+          <div class="button-container">
+            <button
+              type="reset"
+              formmethod="dialog"
+              class="project-cancel-button"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              formmethod="dialog"
+              class="project-edit-button"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </dialog>
       <div class="side-content">
         <div class="project-buttons"></div>
         <button class="add-project-button">+ Add project</button>

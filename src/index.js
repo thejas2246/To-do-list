@@ -12,6 +12,7 @@ import {
   updateSideDisplay,
   updateProjectDetailsOnScreen,
   updateListOnScreen,
+  editProject,
 } from "./dom";
 import { StoreObjects } from "./class";
 import { createDefaultObject } from "./create-object";
@@ -33,6 +34,9 @@ addListButton.addEventListener("click", showListForm);
 
 const listFormSubmitButton = document.querySelector(".list-submit-button");
 listFormSubmitButton.addEventListener("click", onSubmitListForm);
+
+const projectEditButton = document.querySelector(".project-edit-button");
+projectEditButton.addEventListener("click", editProject);
 
 window.addEventListener("beforeunload", storeData);
 
