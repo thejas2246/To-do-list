@@ -16,7 +16,6 @@ import {
 } from "./dom";
 import { StoreObjects } from "./class";
 import { createDefaultObject } from "./create-object";
-import { dateFormating } from "./testdata";
 
 const addProjectButton = document.querySelector(".add-project-button");
 addProjectButton.addEventListener("click", showProjectForm);
@@ -65,5 +64,3 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("storage not available");
   }
 });
-
-dateFormating();
