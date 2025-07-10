@@ -108,6 +108,9 @@ export function updateListOnScreen(project) {
   const listGrid = document.querySelector(".bottom-list-container");
   listGrid.textContent = "";
   for (let list of project.toDoList) {
+    const projectDetailsLeft = document.createElement("div");
+    const projectDetailsRight = document.createElement("div");
+
     const projectEditIcon = document.createElement("img");
     const projectEditButton = document.createElement("button");
     const listTrashIcon = document.createElement("img");
@@ -130,14 +133,15 @@ export function updateListOnScreen(project) {
     listName.textContent = list.listName;
     const dueDate = document.createElement("p");
     console.log(list.dueDate);
+    if (list.dueDate != "") {
+      let [year, month, day] = list.dueDate.split("-");
+      const formattedDate = format(
+        new Date(year, month - 1, day),
+        "LLLL dd,yyyy"
+      );
+      dueDate.textContent = formattedDate;
+    }
 
-    let [year, month, day] = list.dueDate.split("-");
-    const formattedDate = format(
-      new Date(year, month - 1, day),
-      "LLLL dd,yyyy"
-    );
-
-    dueDate.textContent = formattedDate;
     const priority = document.createElement("p");
     priority.textContent = list.priority;
     if (list.priority == "low") {
@@ -153,11 +157,13 @@ export function updateListOnScreen(project) {
       priority.classList.remove("low");
       priority.classList.remove("medium");
     }
-    listDetailContainer.appendChild(checkedList);
-    listDetailContainer.appendChild(listName);
-    listDetailContainer.appendChild(priority);
-    listDetailContainer.appendChild(projectEditButton);
-    listDetailContainer.appendChild(listTrashButton);
+    projectDetailsLeft.appendChild(checkedList);
+    projectDetailsLeft.appendChild(listName);
+    projectDetailsRight.appendChild(priority);
+    projectDetailsRight.appendChild(projectEditButton);
+    projectDetailsRight.appendChild(listTrashButton);
+    listDetailContainer.appendChild(projectDetailsLeft);
+    listDetailContainer.appendChild(projectDetailsRight);
     listDateContainer.appendChild(dueDate);
 
     listGrid.appendChild(itemContainer);

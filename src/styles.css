@@ -221,15 +221,12 @@ input{
 }
 .bottom-list-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit,360px);
+    grid-template-columns: repeat(auto-fit,minmax(390px,1fr));
     gap: 20px;
 }
 .bottom-list-container>div{
-    background-color: var(--bg-black);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap:10px;
     padding:20px;
     border: 1px solid var(--b-color);
@@ -255,10 +252,18 @@ input{
 .bottom-list-container>div>*:nth-child(1){
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 20px;
 }
-.bottom-list-container>div>*:nth-child(1)>h3{
-    width: 10ch;    
+
+.bottom-list-container>div>*:nth-child(1)>div{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bottom-list-container>div>*:nth-child(1) h3{
+    width: 15ch;    
   white-space: normal;          
   word-break: break-word;             
   margin: 0; 
