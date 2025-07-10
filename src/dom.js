@@ -29,7 +29,6 @@ export function setCurrentProject(project) {
 }
 
 export function updateProjectDetailsOnScreen(project) {
-  console.log(project);
   const projectHeadingSection = document.querySelector(".top");
   projectHeadingSection.textContent = "";
 
@@ -53,9 +52,9 @@ export function updateProjectDetailsOnScreen(project) {
   editButton.setAttribute("class", "project-edit-button");
 
   editButton.addEventListener("click", openEditForm);
+  deleteButton.addEventListener("click", deleteProject);
 
   deleteButton.setAttribute("class", "project-delete-button");
-  console.log(project.name);
   projectHeading.textContent = project.name;
   projectDescription.textContent = project.description;
 
@@ -165,4 +164,18 @@ export function editProject() {
     }
   }
   projectEditForm.reset();
+}
+
+function deleteProject() {
+  for (let i = 0; i < StoreObjects.projectArray.length; i++) {
+    if (StoreObjects.projectArray[i].uid == StoreObjects.currentProject) {
+      StoreObjects.projectArray.splice(i, 1);
+      console.log(StoreObjects.projectArray);
+    }
+  }
+  updateSideDisplay();
+  updateProjectDetailsOnScreen(StoreObjects.projectArray[0]);
+  setCurrentProject(StoreObjects.projectArray[0]);
+  updateListOnScreen(StoreObjects.projectArray[0]);
+  updateButtonColor(StoreObjects.projectArray[0]);
 }
