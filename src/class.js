@@ -22,6 +22,7 @@ export class CreateList {
     this.dueDate = dueDate;
     this.priority = priority;
     this.checkList = false;
+    this.uid = crypto.randomUUID();
   }
 }
 

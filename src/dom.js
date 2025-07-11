@@ -122,6 +122,11 @@ export function updateListOnScreen(project) {
     listTrashIcon.src = trashIcon;
     projectEditButton.appendChild(projectEditIcon);
     listTrashButton.appendChild(listTrashIcon);
+
+    listTrashButton.setAttribute("list-id", list.uid);
+    listTrashButton.addEventListener("click", (e) => {
+      deleteList(list.uid, project);
+    });
     const itemContainer = document.createElement("div");
 
     const listDetailContainer = document.createElement("div");
@@ -217,4 +222,13 @@ function deleteProject() {
   setCurrentProject(StoreObjects.projectArray[0]);
   updateListOnScreen(StoreObjects.projectArray[0]);
   updateButtonColor(StoreObjects.projectArray[0]);
+}
+
+function deleteList(listUid, project) {
+  for (let i = 0; i < project.toDoList.length; i++) {
+    if (project.toDoList[i].uid == listUid) {
+      project.toDoList.splice(i, 1);
+    }
+  }
+  updateListOnScreen(project);
 }
