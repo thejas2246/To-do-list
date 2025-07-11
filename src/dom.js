@@ -134,6 +134,8 @@ export function updateListOnScreen(project) {
     listTrashButton.setAttribute("list-id", list.uid);
     listTrashButton.addEventListener("click", (e) => {
       deleteList(list.uid, project);
+      updateTotalTask();
+      updateProjectTaskNumber(project);
     });
     const itemContainer = document.createElement("div");
 
