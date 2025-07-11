@@ -128,6 +128,50 @@
           </div>
         </form>
       </dialog>
+      <dialog class="list-edit-dialog">
+        <form action="" class="list-edit-form">
+          <h2>List Details</h2>
+          <div>
+            <label for="list-edit-name">Name</label>
+            <input type="text" name="list-edit-name" id="list-edit-name" />
+          </div>
+          <div>
+            <label for="due-date-edit">Due Date</label>
+            <input type="date" name="due-date-edit" id="due-date-edit" />
+          </div>
+          <div>
+            <p>Priority</p>
+            <div class="radio-container">
+              <label for="low">Low</label>
+              <input
+                type="radio"
+                name="priority-edit"
+                id="low"
+                value="low"
+                checked
+              />
+              <label for="medium">Medium</label>
+              <input
+                type="radio"
+                name="priority-edit"
+                id="medium"
+                value="medium"
+              />
+              <label for="high">High</label>
+              <input type="radio" name="priority-edit" id="high" value="high" />
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit"
+              formmethod="dialog"
+              class="list-edit-submit-button"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </dialog>
       <div class="side-content">
         <div class="project-buttons"></div>
         <button class="add-project-button">+ Add project</button>

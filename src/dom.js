@@ -121,6 +121,9 @@ export function updateListOnScreen(project) {
     projectEditIcon.src = editIcon;
     listTrashIcon.src = trashIcon;
     projectEditButton.appendChild(projectEditIcon);
+    projectEditButton.addEventListener("click", () => {
+      editList(list.uid, project);
+    });
     listTrashButton.appendChild(listTrashIcon);
 
     listTrashButton.setAttribute("list-id", list.uid);
@@ -137,6 +140,10 @@ export function updateListOnScreen(project) {
 
     const checkedList = document.createElement("input");
     checkedList.setAttribute("type", "checkbox");
+    checkedList.checked = list.checkedList;
+    checkedList.addEventListener("click", () => {
+      updateCheckListValue(list, checkedList.checked, project);
+    });
     const listName = document.createElement("h3");
     listName.textContent = list.listName;
     const dueDate = document.createElement("p");
@@ -177,6 +184,9 @@ export function updateListOnScreen(project) {
     listDateContainer.appendChild(dueDate);
 
     listGrid.appendChild(itemContainer);
+    if (list.checkedList) {
+      itemContainer.style.opacity = 0.6;
+    }
   }
   listContainer.appendChild(listGrid);
 }
@@ -230,5 +240,59 @@ function deleteList(listUid, project) {
       project.toDoList.splice(i, 1);
     }
   }
+  updateListOnScreen(project);
+}
+
+function editList(listUid, project) {
+  const listEditDialog = document.querySelector(".list-edit-dialog");
+  listEditDialog.showModal();
+  showListValuesOnForm(listUid, project);
+  const listSubmitButton = document.querySelector(".list-edit-submit-button");
+  listSubmitButton.addEventListener(
+    "click",
+    () => {
+      getFormValue(listUid, project);
+    },
+    { once: true }
+  );
+}
+
+function getFormValue(listUid, project) {
+  const listName = document.querySelector("#list-edit-name");
+  const dueDate = document.querySelector("#due-date-edit");
+  const radioButton = document.querySelector(
+    'input[name="priority-edit"]:checked'
+  );
+  for (let i = 0; i < project.toDoList.length; i++) {
+    if (project.toDoList[i].uid == listUid) {
+      console.log(project.toDoList[i]);
+
+      project.toDoList[i].listName = listName.value;
+      project.toDoList[i].dueDate = dueDate.value;
+      project.toDoList[i].priority = radioButton.value;
+    }
+  }
+  updateListOnScreen(project);
+}
+
+function showListValuesOnForm(listUid, project) {
+  const listName = document.querySelector("#list-edit-name");
+  const dueDate = document.querySelector("#due-date-edit");
+  console.log(dueDate);
+  const radioButton = document.querySelectorAll('input[name="priority-edit"]');
+  console.log(radioButton);
+  for (let i = 0; i < project.toDoList.length; i++) {
+    if (project.toDoList[i].uid == listUid) {
+      listName.value = project.toDoList[i].listName;
+      dueDate.value = project.toDoList[i].dueDate;
+      radioButton.forEach((button) => {
+        button.checked = button.value == project.toDoList[i].priority;
+      });
+    }
+  }
+}
+
+function updateCheckListValue(list, checkedValue, project) {
+  list.checkedList = checkedValue;
   updateListOnScreen(project);
 }
