@@ -31,7 +31,8 @@ export function updateTotalTask() {
 function countCompletedTask(project) {
   let count = 0;
   for (let list of project.toDoList) {
-    if (list.checkList == "true") {
+    console.log(list.checkList);
+    if (list.checkList == true) {
       count++;
     }
   }

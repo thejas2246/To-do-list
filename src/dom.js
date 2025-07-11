@@ -4,6 +4,7 @@ import editIcon from "./assets/icons/edit.svg";
 import trashIcon from "./assets/icons/trash.svg";
 import { format } from "date-fns";
 import calenderIcon from "./assets/icons/calender.svg";
+import { updateTotalTask } from "./create-object";
 
 export function updateSideDisplay() {
   const projectButtons = document.querySelector(".project-buttons");
@@ -69,13 +70,17 @@ export function updateProjectDetailsOnScreen(project) {
   const dueTaskContainer = document.createElement("div");
 
   const totalTask = document.createElement("p");
+  totalTask.setAttribute("class", "total");
   const totalTaskText = document.createElement("p");
   totalTaskText.textContent = "total task";
   const completedTask = document.createElement("p");
+  completedTask.setAttribute("class", "complete");
   const completedTaskText = document.createElement("p");
   completedTaskText.textContent = "completed task";
 
   const dueTask = document.createElement("p");
+  dueTask.setAttribute("class", "due");
+
   const dueTaskText = document.createElement("p");
   dueTaskText.textContent = "due task";
 
@@ -140,9 +145,11 @@ export function updateListOnScreen(project) {
 
     const checkedList = document.createElement("input");
     checkedList.setAttribute("type", "checkbox");
-    checkedList.checked = list.checkedList;
+    checkedList.checked = list.checkList;
     checkedList.addEventListener("click", () => {
       updateCheckListValue(list, checkedList.checked, project);
+      updateTotalTask();
+      updateProjectTaskNumber(project);
     });
     const listName = document.createElement("h3");
     listName.textContent = list.listName;
@@ -184,7 +191,7 @@ export function updateListOnScreen(project) {
     listDateContainer.appendChild(dueDate);
 
     listGrid.appendChild(itemContainer);
-    if (list.checkedList) {
+    if (list.checkList) {
       itemContainer.style.opacity = 0.6;
     }
   }
@@ -293,6 +300,17 @@ function showListValuesOnForm(listUid, project) {
 }
 
 function updateCheckListValue(list, checkedValue, project) {
-  list.checkedList = checkedValue;
+  list.checkList = checkedValue;
   updateListOnScreen(project);
+  console.log(project);
+}
+
+function updateProjectTaskNumber(project) {
+  const total = document.querySelector(".total");
+  const complete = document.querySelector(".complete");
+  const due = document.querySelector(".due");
+  console.log(complete, due);
+  total.textContent = project.totalTask;
+  complete.textContent = project.completedTask;
+  due.textContent = project.dueTask;
 }
