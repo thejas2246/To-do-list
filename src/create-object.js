@@ -42,7 +42,7 @@ function countCompletedTask(project) {
 export function createDefaultObject() {
   const defaultObj = new CreateProject(
     "Welcome to Project Alpha!",
-    "Here’s an overview of your current tasks and project progress. Stay organized and efficient with TodoMaster.",
+    "Here’s an overview of your current tasks and project progress. Stay organized and efficient with TodoList.",
     true
   );
   StoreObjects.addProjectToArray(defaultObj);
