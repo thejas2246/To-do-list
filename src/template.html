@@ -22,7 +22,7 @@
         <form class="project-form">
           <div>
             <label for="project-name">Name</label>
-            <input type="text" name="project-name" id="project-name" />
+            <input type="text" name="project-name" id="project-name" required />
           </div>
           <div>
             <label for="project-description">Description</label>
@@ -30,6 +30,7 @@
               type="text"
               name="project-description"
               id="project-description"
+              required
             />
           </div>
 
@@ -56,11 +57,11 @@
           <h2>List Details</h2>
           <div>
             <label for="list-name">Name</label>
-            <input type="text" name="list-name" id="list-name" />
+            <input type="text" name="list-name" id="list-name" required />
           </div>
           <div>
             <label for="due-date">Due Date</label>
-            <input type="date" name="due-date" id="due-date" />
+            <input type="date" name="due-date" id="due-date" required />
           </div>
           <div>
             <p>Priority</p>
@@ -99,6 +100,7 @@
               type="text"
               name="project-edit-name"
               id="project-edit-name"
+              required
             />
           </div>
           <div>
@@ -107,6 +109,7 @@
               type="text"
               name="project-edit-description"
               id="project-edit-description"
+              required
             />
           </div>
 
@@ -114,14 +117,14 @@
             <button
               type="reset"
               formmethod="dialog"
-              class="project-cancel-button"
+              class="project-edit-cancel-button"
             >
               Cancel
             </button>
             <button
               type="submit"
               formmethod="dialog"
-              class="project-edit-button"
+              class="project-edit-submit-button"
             >
               Submit
             </button>
@@ -133,11 +136,21 @@
           <h2>List Details</h2>
           <div>
             <label for="list-edit-name">Name</label>
-            <input type="text" name="list-edit-name" id="list-edit-name" />
+            <input
+              type="text"
+              name="list-edit-name"
+              id="list-edit-name"
+              required
+            />
           </div>
           <div>
             <label for="due-date-edit">Due Date</label>
-            <input type="date" name="due-date-edit" id="due-date-edit" />
+            <input
+              type="date"
+              name="due-date-edit"
+              id="due-date-edit"
+              required
+            />
           </div>
           <div>
             <p>Priority</p>

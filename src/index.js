@@ -20,11 +20,9 @@ import { createDefaultObject } from "./create-object";
 const addProjectButton = document.querySelector(".add-project-button");
 addProjectButton.addEventListener("click", showProjectForm);
 
-const projectFormSubmitButton = document.querySelector(
-  ".project-submit-button"
-);
+const projectForm = document.querySelector(".project-form");
 
-projectFormSubmitButton.addEventListener("click", () => {
+projectForm.addEventListener("submit", () => {
   onSubmitProjectForm();
   updateButtonColor();
 });
@@ -32,11 +30,11 @@ projectFormSubmitButton.addEventListener("click", () => {
 const addListButton = document.querySelector(".add-todo-button");
 addListButton.addEventListener("click", showListForm);
 
-const listFormSubmitButton = document.querySelector(".list-submit-button");
-listFormSubmitButton.addEventListener("click", onSubmitListForm);
+const listForm = document.querySelector(".list-form");
+listForm.addEventListener("submit", onSubmitListForm);
 
-const projectEditButton = document.querySelector(".project-edit-button");
-projectEditButton.addEventListener("click", editProject);
+const projectEditSubmit = document.querySelector(".project-edit-form");
+projectEditSubmit.addEventListener("submit", editProject);
 
 window.addEventListener("beforeunload", storeData);
 
@@ -63,4 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     console.log("storage not available");
   }
+});
+
+const projectFormCancelButton = document.querySelector(
+  ".project-cancel-button"
+);
+projectFormCancelButton.addEventListener("click", () => {
+  const projectDialog = document.querySelector(".project-dialog");
+  projectDialog.close();
+});
+
+const projectFormEditCancelButton = document.querySelector(
+  ".project-edit-cancel-button"
+);
+projectFormEditCancelButton.addEventListener("click", () => {
+  const projectDialog = document.querySelector(".project-edit-dialog");
+  projectDialog.close();
 });

@@ -256,9 +256,9 @@ function editList(listUid, project) {
   const listEditDialog = document.querySelector(".list-edit-dialog");
   listEditDialog.showModal();
   showListValuesOnForm(listUid, project);
-  const listSubmitButton = document.querySelector(".list-edit-submit-button");
-  listSubmitButton.addEventListener(
-    "click",
+  const listEditForm = document.querySelector(".list-edit-form");
+  listEditForm.addEventListener(
+    "submit",
     () => {
       getFormValue(listUid, project);
     },

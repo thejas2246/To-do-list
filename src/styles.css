@@ -163,18 +163,18 @@ input{
     box-sizing: border-box;
 }
 
-.project-dialog{
+.project-dialog,.project-edit-dialog{
     color: var(--f-white);
     background-color: var(--bg-black);
     border-color: var(--b-color);
 }
 
-.project-submit-button{
+.project-submit-button,.project-edit-submit-button{
     background-color: var(--bg-orange);
     color: var(--f-white);
 }
 
-.list-dialog{
+.list-dialog,.list-edit-dialog{
     background-color: var(--b-color);
     color: var(--f-white);
     border:none;
