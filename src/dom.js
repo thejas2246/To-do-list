@@ -3,6 +3,7 @@ import { openEditForm } from "./form";
 import editIcon from "./assets/icons/edit.svg";
 import trashIcon from "./assets/icons/trash.svg";
 import { format } from "date-fns";
+import calenderIcon from "./assets/icons/calender.svg";
 
 export function updateSideDisplay() {
   const projectButtons = document.querySelector(".project-buttons");
@@ -50,7 +51,7 @@ export function updateProjectDetailsOnScreen(project) {
   }
   projectHeadingSection.appendChild(editButtonContainer);
 
-  editButton.textContent = "Edit Project";
+  editButton.textContent = "+ Edit Project";
   deleteButton.textContent = "Delete Project";
   editButton.setAttribute("class", "project-edit-button");
 
@@ -110,6 +111,8 @@ export function updateListOnScreen(project) {
   for (let list of project.toDoList) {
     const projectDetailsLeft = document.createElement("div");
     const projectDetailsRight = document.createElement("div");
+    const calenderImage = document.createElement("img");
+    calenderImage.src = calenderIcon;
 
     const projectEditIcon = document.createElement("img");
     const projectEditButton = document.createElement("button");
@@ -139,7 +142,7 @@ export function updateListOnScreen(project) {
         new Date(year, month - 1, day),
         "LLLL dd,yyyy"
       );
-      dueDate.textContent = formattedDate;
+      dueDate.textContent = `Due:${formattedDate}`;
     }
 
     const priority = document.createElement("p");
@@ -157,6 +160,7 @@ export function updateListOnScreen(project) {
       priority.classList.remove("low");
       priority.classList.remove("medium");
     }
+    listDateContainer.setAttribute("class", "date-container");
     projectDetailsLeft.appendChild(checkedList);
     projectDetailsLeft.appendChild(listName);
     projectDetailsRight.appendChild(priority);
@@ -164,6 +168,7 @@ export function updateListOnScreen(project) {
     projectDetailsRight.appendChild(listTrashButton);
     listDetailContainer.appendChild(projectDetailsLeft);
     listDetailContainer.appendChild(projectDetailsRight);
+    listDateContainer.appendChild(calenderImage);
     listDateContainer.appendChild(dueDate);
 
     listGrid.appendChild(itemContainer);
